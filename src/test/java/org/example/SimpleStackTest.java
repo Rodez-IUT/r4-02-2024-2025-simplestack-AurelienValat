@@ -3,7 +3,6 @@ package org.example;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -81,7 +80,7 @@ class SimpleStackTest {
     }
     @Test
     @DisplayName("Test limit when trying to peek an empty stack")
-    public void testPeekOnEmptyStack() throws EmptyStackException{
+    public void testPeekOnEmptyStack() {
         // Given an empty stack
         Stack stack = new SimpleStack();
 

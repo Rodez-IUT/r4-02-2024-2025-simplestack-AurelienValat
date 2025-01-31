@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class SimpleStack implements Stack {
 
-    private ArrayList<Item> stack;
+    private final ArrayList<Item> stack;
 
     public SimpleStack() {
         this.stack = new ArrayList<>();
