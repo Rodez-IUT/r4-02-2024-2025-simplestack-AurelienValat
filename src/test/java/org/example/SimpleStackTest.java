@@ -3,6 +3,7 @@ package org.example;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -58,5 +59,34 @@ class SimpleStackTest {
         // When we "pop" the stack, should throws an EmptyStackException.
         //assertThrows(EmptyStackException.class, ()->stack.pop(), "EmptyStackException not thrown");
         assertThrows(EmptyStackException.class, stack::pop, "EmptyStackException not thrown");
+    }
+
+    @Test
+    @DisplayName("Test limit when trying to pop a not empty stack")
+    public void testPopOnNotEmptyStack() throws EmptyStackException {
+        // Given a not empty stack
+        Stack stack = new SimpleStack();
+        Item item = new SimpleItem();
+        Item item2 = new SimpleItem();
+        stack.push(item);
+        stack.push(item2);
+
+        // When we "pop" the stack, should remove the object at the top of this stack and return that object
+        stack.pop();
+
+        //Then
+        assertEquals(1, stack.getSize(),"The stack must constain 1 item");
+        assertEquals(item, stack.peek());
+
+    }
+    @Test
+    @DisplayName("Test limit when trying to peek an empty stack")
+    public void testPeekOnEmptyStack() throws EmptyStackException{
+        // Given an empty stack
+        Stack stack = new SimpleStack();
+
+        // When we peek the stack, should throws a EmptyStackException
+        assertThrows(EmptyStackException.class, ()->stack.peek(), "EmptyStackException not thrown");
+
     }
 }
